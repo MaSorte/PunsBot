@@ -106,7 +106,7 @@ public abstract class TelegramBot extends TelegramLongPollingBot {
                 + "\nДата создания: " + pp.get().getDateCreate(), chatId));
     }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public void handleAddCommand(@RequestParam("text") String messageText,
                                  @RequestParam("chat_id") long chatId,
                                  Update update) {
@@ -134,7 +134,7 @@ public abstract class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    @GetMapping("/del")
+    @DeleteMapping("/del")
     public void del(long chatId, Update update) {
         String text = update.getMessage().getText();
         int punId = Integer.parseInt(text.substring(text.indexOf(" ") + 1).trim());
